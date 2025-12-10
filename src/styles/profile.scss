@@ -1,0 +1,18 @@
+.profile-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 5%;
+  background-color: #ddd;
+}
+
+.separator {
+  margin: 0 8px;
+  color: #ccc;
+}

@@ -1,0 +1,42 @@
+.login-page {
+  width: 100vw;
+  height: 100dvh;
+  top: 0;
+  left: 0;
+  background: #3b3a7e0f;
+  background: linear-gradient(
+      to right,
+      rgba(59, 58, 126, 0.2),
+      rgba(59, 58, 126, 0.4)
+    ),
+    url("../assets/background-FV.jpg") center/cover no-repeat;
+
+  .login-page-container {
+    width: 440px;
+    height: auto;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px lightgray;
+    padding: 35px 20px;
+
+    .login-page-container-logo {
+      width: 100px;
+    }
+    .optional-login-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+    }
+    .optional-login-image {
+      width: 20px;
+    }
+    .optional-login-text {
+      font-size: 12px;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+const config = {
+  APP_NAME: "fvh-permission",
+  LOCAL_LANGUAGE_LABEL: import.meta.env.VITE_LOCAL_LANGUAGE_LABEL,
+  BASE_URL: import.meta.env.VITE_BASE_URL,
+  LOCAL_PROFILE: "FVH_SI_PROFILE",
+  LOCAL_AUTHENTICATED: "FVH_SI_AUTHENTICATED",
+  LOCAL_ACCESS_TOKEN: "FVH_SI_ACCESS_TOKEN",
+  LOCAL_REFRESH_TOKEN: "FVH_SI_REFRESH_TOKEN",
+  LOCAL_LOGIN_TYPE: "FVH_SI_LOGIN_TYPE",
+  LOCAL_USERNAME: "FVH_SI_USERNAME",
+  TIMEOUT: 50000,
+  PAGE_SIZE: 500,
+  TENANT_URL: "https://htpa.sharepoint.com",
+  LAST_VERSION: "2025-08-30 18:00",
+  IN_TEST: import.meta.env.VITE_IN_TEST === "Yes",
+  HOME_PAGE: import.meta.env.VITE_HOME_PAGE,
+  IGNORE_MAIL: false,
+};
+
+export default config;
