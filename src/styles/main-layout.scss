@@ -1,0 +1,210 @@
+// MainLayout Styles
+
+// Menu Container
+.menu-container {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 5px 0 5px;
+  gap: 10px;
+}
+
+// Custom Menu Button Link
+.menu-button-link {
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+// Custom Menu Button
+.menu-button {
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  border: 1px solid #138702;
+  background: #fff;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  height: 50px;
+  transition: all 0.3s ease;
+
+  // Expanded state
+  width: 258px;
+  padding: 0 19px;
+  justify-content: flex-start;
+  gap: 10px;
+
+  // Collapsed state
+  &.collapsed {
+    width: 50px;
+    padding: 0;
+    justify-content: center;
+    gap: 0;
+  }
+
+  // Hover effect
+  &:hover {
+    background: #f0f9f0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.3);
+  }
+}
+
+// Menu Button Icon
+.menu-button-icon {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+// Menu Button Text
+.menu-button-text {
+  color: #138702;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+// Other Menu Items Container
+.other-menu-items {
+  width: 100%;
+  margin-top: 20px;
+}
+
+// Logo Container
+.logo-container {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px 8px 24px;
+}
+
+// Logo Image
+.logo-image {
+  cursor: pointer;
+  max-height: 100px;
+  width: auto;
+  background: transparent;
+}
+
+// Header Account Section
+.header-account {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 20px;
+  gap: 12px;
+  height: 100%;
+}
+
+// Header Account Info (Text section)
+.header-account-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+// Header Account Name
+.header-account-name {
+  font-weight: bold;
+  color: #0F7798;
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.2;
+  text-align: right;
+}
+
+// Header Account Email
+.header-account-email {
+  color: #0F7798;
+  font-size: 12px;
+  margin: 0;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+// Header Account Avatar
+.header-account-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #0F7798;
+  box-shadow: 0 2px 8px rgba(23, 162, 184, 0.2);
+  background: linear-gradient(135deg, #5ac2dc 0%, #17a2b8 100%);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+  }
+}
+
+// Header Account Button in Popover
+.header-account-button-popover {
+  width: 100%;
+}
+
+// Header Account Button
+.header-account-button {
+  height: 32px;
+  white-space: nowrap;
+}
+
+// Header Account Version
+.header-account-version {
+  font-size: 0.7em;
+  color: #000;
+  white-space: nowrap;
+  margin: 0;
+}
+
+// Sidebar Version
+.sidebar-version {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  text-align: center;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-version-text {
+  font-size: 0.7em;
+  color: #138702;
+}
+
+// Tabbar Background Images
+.tabbar-left,
+.tabbar-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.tabbar-left {
+  left: 0;
+  object-position: left center;
+}
+
+.tabbar-right {
+  right: 0;
+  object-position: right center;
+}
+

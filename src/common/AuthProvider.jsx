@@ -76,30 +76,47 @@ const AuthProvider = () => {
   const fetchUser = async () => {
     setIsGettingUser(true);
 
-    var tryTime = 3;
+    // ========== CODE CŨ: Gọi API getAuth (đã comment) ==========
+    // var tryTime = 3;
+    // try {
+    //   const newProfile = await getAuth();
+
+    //   setProfile(newProfile);
+    //   dispatch(authActions.setCurrentUser(newProfile.user));
+
+    //   localStorage.setItem(config.LOCAL_PROFILE, JSON.stringify(newProfile));
+    // } catch (error) {
+    //   if (handleError(error) === '"401"' && tryTime >= 0) {
+    //     try {
+    //       tryTime--;
+
+    //       await handleRefreshToken();
+    //       await fetchUser();
+
+    //       return;
+    //     } catch (error) {
+    //       logout();
+    //     }
+    //   } else {
+    //     logout();
+    //   }
+    // }
+    // ========== KẾT THÚC CODE CŨ ==========
+
+    // ========== CODE MỚI: Bỏ qua API - chỉ dùng localStorage ==========
     try {
-      const newProfile = await getAuth();
-
-      setProfile(newProfile);
-      dispatch(authActions.setCurrentUser(newProfile.user));
-
-      localStorage.setItem(config.LOCAL_PROFILE, JSON.stringify(newProfile));
-    } catch (error) {
-      if (handleError(error) === '"401"' && tryTime >= 0) {
-        try {
-          tryTime--;
-
-          await handleRefreshToken();
-          await fetchUser();
-
-          return;
-        } catch (error) {
-          logout();
+      const storedProfile = localStorage.getItem(config.LOCAL_PROFILE);
+      if (storedProfile) {
+        const newProfile = JSON.parse(storedProfile);
+        setProfile(newProfile);
+        if (newProfile.user) {
+          dispatch(authActions.setCurrentUser(newProfile.user));
         }
-      } else {
-        logout();
       }
+    } catch (error) {
+      console.error("❌ Lỗi load profile từ localStorage:", error);
     }
+    // ========== KẾT THÚC CODE MỚI ==========
 
     setIsGettingUser(false);
     setIsRefreshPage(false);
@@ -131,8 +148,33 @@ const AuthProvider = () => {
   };
 
   useEffect(() => {
-    fetchUser();
-    getWorkLocationAndMapping();
+    // ========== CODE CŨ: Gọi fetchUser và getWorkLocationAndMapping (đã comment) ==========
+    // fetchUser();
+    // getWorkLocationAndMapping();
+    // ========== KẾT THÚC CODE CŨ ==========
+
+    // ========== CODE MỚI: Chỉ load từ localStorage, không gọi API ==========
+    // Load profile từ localStorage ngay lập tức
+    const storedProfile = localStorage.getItem(config.LOCAL_PROFILE);
+    if (storedProfile) {
+      try {
+        const profileData = JSON.parse(storedProfile);
+        setProfile(profileData);
+        if (profileData.user) {
+          dispatch(authActions.setCurrentUser(profileData.user));
+        }
+        setIsGettingUser(false);
+        setIsRefreshPage(false);
+      } catch (error) {
+        console.error("❌ Lỗi parse profile:", error);
+        setIsGettingUser(false);
+        setIsRefreshPage(false);
+      }
+    } else {
+      setIsGettingUser(false);
+      setIsRefreshPage(false);
+    }
+    // ========== KẾT THÚC CODE MỚI ==========
   }, []);
 
   if (isGettingUser && isRefreshPage) {

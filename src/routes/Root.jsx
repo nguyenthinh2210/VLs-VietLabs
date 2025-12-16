@@ -12,12 +12,8 @@ import LoginPage from "../components/Auth/LoginPage";
 import NoInternetPage from "../components/Auth/NoInternetPage";
 import NotFoundPage from "../components/Auth/NotFoundPage";
 
-import MyPermission from "../pages/MyPermission/MyPermission";
-import PermissionRequest from "../pages/PermissionRequest/PermissionRequest";
-import UsersPermission from "../pages/UsersPermission/UsersPermission";
-import UserPermissionDetails from "../pages/UsersPermission/UserPermissionDetails";
-import PermissionSetting from "../pages/PermissionSetting/PermissionSetting";
-import MyApprovalDetails from "../pages/MyApprovalDetails/MyApprovalDetails";
+import QuotationManagement from "../pages/QuotationManagement/QuotationManagement";
+import CustomerManagement from "../pages/CustomerManagement/CustomerManagement";
 
 import { store } from "../store";
 import config from "../common/config";
@@ -74,24 +70,15 @@ const Root = () => {
               {/* Protected routes */}
               <Route element={<AuthProvider />}>
                 <Route element={<MainLayout />}>
-                  <Route index element={<MyPermission />} />
-                  <Route path="/mypermission" element={<MyPermission />} />
+                  <Route index element={<QuotationManagement />} />
+          
                   <Route
-                    path="/myrequest-approve"
-                    element={<PermissionRequest />}
+                    path="/quotation-management"
+                    element={<QuotationManagement />}
                   />
                   <Route
-                    path="/myrequest-approve/detail/:id"
-                    element={<MyApprovalDetails />}
-                  />
-                  <Route path="/mystaff" element={<UsersPermission />} />
-                  <Route
-                    path="/mystaff/detail/:id"
-                    element={<UserPermissionDetails />}
-                  />
-                  <Route
-                    path="/permissionsetting"
-                    element={<PermissionSetting />}
+                    path="/customer-management"
+                    element={<CustomerManagement />}
                   />
                 </Route>
               </Route>
@@ -108,3 +95,4 @@ const Root = () => {
 };
 
 export default Root;
+

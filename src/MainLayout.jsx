@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, Menu, Button, theme, Image, Tooltip } from "antd";
+import { Layout, Menu, Button, theme, Image, Tooltip, Popover } from "antd";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -8,10 +8,16 @@ import {
   SettingOutlined,
   LogoutOutlined,
   FileDoneOutlined,
+  FileTextOutlined,
+  UsergroupAddOutlined,
 } from "@ant-design/icons";
 import { Outlet, Link } from "react-router-dom";
-import logoFV from "./assets/FVH-Logo.png";
+import logoVLs from "./assets/LogoVLs.png";
 import avatar from "./assets/avatar.png";
+import tabbarLeft from "./assets/TabbarLeft.jpg";
+import tabbarRight from "./assets/TabbarRight.jpg";
+import documentIcon from "./assets/document.jpg";
+import peopleIcon from "./assets/people.jpg";
 import { useMsal } from "@azure/msal-react";
 import { useAuth } from "./common/AuthProvider";
 import config from "./common/config";
@@ -40,15 +46,16 @@ const MainLayout = () => {
   } = theme.useToken();
 
   const rawMenuItems = [
+
     {
-      key: "/",
-      icon: <UserOutlined />,
-      label: <Link to="/mypermission">My Permission</Link>,
+      key: "/quotation-management",
+      icon: <FileTextOutlined />,
+      label: <Link to="/quotation-management">Quản lý báo giá</Link>,
     },
     {
-      key: "/mystaff",
-      icon: <UsergroupDeleteOutlined />,
-      label: <Link to="/mystaff">My Staff</Link>,
+      key: "/customer-management",
+      icon: <UsergroupAddOutlined />,
+      label: <Link to="/customer-management">Quản lý khách hàng</Link>,
     },
     {
       key: "/myrequest-approve",
@@ -129,110 +136,76 @@ const MainLayout = () => {
           display: "flex",
           flexDirection: "column",
           height: "100vh",
+          position: "relative",
         }}
       >
+        {/* Background Tabbar Left */}
+        <img
+          src={tabbarLeft}
+          alt="Tabbar Left"
+          className="tabbar-left"
+        />
+
+        {/* Background Tabbar Right */}
+        <img
+          src={tabbarRight}
+          alt="Tabbar Right"
+          className="tabbar-right"
+        />
+
         {/* Logo */}
-        <div className="px-6 pt-4 pb-2">
+        <div className="logo-container px-6 pt-4 pb-2">
           <Image
             preview={false}
-            src={logoFV}
-            style={{ cursor: "pointer", maxHeight: 50 }}
+            src={logoVLs}
+            className="logo-image"
           />
         </div>
 
         {/* Menu */}
-        <div style={{ flex: 1, overflowY: "auto" }}>
-          <Menu
-            theme="dark"
-            mode="inline"
-            defaultSelectedKeys={[selectedKey]}
-            items={menuItems}
-          />
-        </div>
-
-        {/* Sidebar Account */}
-        {collapsed ? (
-          <>
-            <img
-              src={avatar}
-              style={{
-                width: "55%",
-                height: "40px",
-                position: "absolute",
-                bottom: "45px",
-                left: "50%",
-                transform: "translateX(-50%)",
-              }}
-              alt="Avatar"
-              loading="eager"
-            />
-            <Tooltip title="Logout" placement="right">
-              <Button
-                icon={<LogoutOutlined />}
-                size="small"
-                type="primary"
-                onClick={handleClickLogout}
-                style={{
-                  width: "100%",
-                  height: "35px",
-                  position: "absolute",
-                  bottom: "0px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  borderRadius: "10px",
-                }}
-              />
-            </Tooltip>
-          </>
-        ) : (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              background: "#d5f1f7",
-              padding: "10px",
-              width: "100%",
-              position: "absolute",
-              bottom: "0px",
-              left: "50%",
-              transform: "translateX(-50%)",
-            }}
-          >
-            <img
-              src={avatar}
-              style={{ width: "60px", height: "60px" }}
-              alt="Avatar"
-              loading="eager"
-            />
-            <Link to="/profile">
-              <div className="mt-2 fw-bold">
-                {profile?.user?.employee_name} -{" "}
-                {profile?.user?.employee_number}
+        <div className="menu-container">
+          {/* Custom Menu Buttons */}
+          <Tooltip title={collapsed ? "Quản lý báo giá" : ""} placement="right">
+            <Link to="/quotation-management" className="menu-button-link">
+              <div className={`menu-button ${collapsed ? "collapsed" : ""}`}>
+                <img src={documentIcon} alt="Document" className="menu-button-icon" />
+                {!collapsed && (
+                  <span className="menu-button-text">Quản lý báo giá</span>
+                )}
               </div>
             </Link>
+          </Tooltip>
 
-            <Button
-              icon={<LogoutOutlined />}
-              type="primary"
-              size="small"
-              onClick={handleClickLogout}
-              style={{ width: "100%", marginTop: "10px" }}
-            >
-              Logout
-            </Button>
-            <div
-              style={{
-                fontSize: "0.7em",
-                textAlign: "center",
-                marginTop: "5px",
-              }}
-            >
-              Last version:{" "}
-              <span className="font-bold"> {config.LAST_VERSION}</span>
-            </div>
+          <Tooltip title={collapsed ? "Quản lý khách hàng" : ""} placement="right">
+            <Link to="/customer-management" className="menu-button-link">
+              <div className={`menu-button ${collapsed ? "collapsed" : ""}`}>
+                <img src={peopleIcon} alt="People" className="menu-button-icon" />
+                {!collapsed && (
+                  <span className="menu-button-text">Quản lý khách hàng</span>
+                )}
+              </div>
+            </Link>
+          </Tooltip>
+
+          {/* Other Menu Items */}
+          <div className="other-menu-items">
+            <Menu
+              theme="dark"
+              mode="inline"
+              defaultSelectedKeys={[selectedKey]}
+              items={menuItems.filter(item => 
+                item.key !== "/quotation-management" && item.key !== "/customer-management"
+              )}
+            />
           </div>
-        )}
+        </div>
+
+        {/* Sidebar Version */}
+        <div className="sidebar-version">
+          <span className="sidebar-version-text">
+            Last version: <span className="font-bold">{config.LAST_VERSION}</span>
+          </span>
+        </div>
       </Sider>
 
       <Layout>
@@ -240,6 +213,9 @@ const MainLayout = () => {
           style={{
             padding: 0,
             background: colorBgContainer,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
           <Button
@@ -252,6 +228,39 @@ const MainLayout = () => {
               height: 64,
             }}
           />
+          
+          {/* Header Account Section */}
+          <div className="header-account">
+            <div className="header-account-info">
+              <Link to="/quotation-management" style={{ textDecoration: "none" }}>
+                <div className="header-account-name">Admin</div>
+                <div className="header-account-email">admin@viet-labs.com</div>
+              </Link>
+            </div>
+            <Popover
+              content={
+                <Button
+                  icon={<LogoutOutlined />}
+                  type="primary"
+                  size="small"
+                  onClick={handleClickLogout}
+                  className="header-account-button-popover"
+                >
+                  Đăng xuất
+                </Button>
+              }
+              trigger="click"
+              placement="bottomRight"
+            >
+              <img
+                src={avatar}
+                className="header-account-avatar"
+                alt="Avatar"
+                loading="eager"
+                style={{ cursor: "pointer" }}
+              />
+            </Popover>
+          </div>
         </Header>
         <Content
           style={{

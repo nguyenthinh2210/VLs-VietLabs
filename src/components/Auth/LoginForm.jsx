@@ -1,5 +1,5 @@
 import { Button, Checkbox, Form, Image, Input } from "antd";
-import imgLogo from "../../assets/FVH-Logo.png";
+import imgLogo from "../../assets/LogoVLs.png";
 import { useEffect } from "react";
 import { useUI } from "../../common/UIProvider";
 import config from "../../common/config";
@@ -25,29 +25,91 @@ function LoginForm() {
 
   //Function
   const handleSubmit = async () => {
-    try {
-      await form.validateFields();
-    } catch (error) {
-      return;
-    }
+    // ========== CODE CŨ: Validate form (đã comment) ==========
+    // try {
+    //   await form.validateFields();
+    // } catch (error) {
+    //   return;
+    // }
+    // ========== KẾT THÚC CODE CŨ ==========
+
+    // ========== CODE MỚI: Bỏ qua validation - vào thẳng không cần nhập ==========
+    // Không cần validate form, vào thẳng web
+    // ========== KẾT THÚC CODE MỚI ==========
+    
     const values = form.getFieldsValue();
     //console.log("🔍 Giá trị nhập vào:", values);
     ui.setLoading(true);
 
     try {
-      const loginRes = await loginService(values.userName, values.password);
-      //console.log("✅ API Response:", loginRes);
+      // ========== CODE CŨ: Gọi API loginService (đã comment) ==========
+      // const loginRes = await loginService(values.userName, values.password);
+      // //console.log("✅ API Response:", loginRes);
+      // localStorage.setItem(
+      //   config.LOCAL_ACCESS_TOKEN,
+      //   loginRes.token.accessToken
+      // );
+      // localStorage.setItem(
+      //   config.LOCAL_REFRESH_TOKEN,
+      //   loginRes.token.refreshToken
+      // );
+      // localStorage.setItem(
+      //   config.LOCAL_AUTHENTICATED,
+      //   JSON.stringify(loginRes)
+      // );
+      // localStorage.setItem(
+      //   config.LOCAL_LOGIN_TYPE,
+      //   JSON.stringify(LOGIN_TYPES.MANUAL)
+      // );
+      // localStorage.setItem(
+      //   config.LOCAL_PROFILE,
+      //   JSON.stringify(await getAuth())
+      // );
+
+      // if (values.remember) {
+      //   localStorage.setItem(config.LOCAL_USERNAME, values.userName);
+      // } else {
+      //   localStorage.removeItem(config.LOCAL_USERNAME);
+      // }
+
+      // if (returnUrl === "/login") {
+      //   navigate("/", { replace: true });
+      // } else {
+      //   navigate(returnUrl, { replace: true });
+      // }
+      // ========== KẾT THÚC CODE CŨ ==========
+
+      // ========== CODE MỚI: Bỏ qua API loginService - vào thẳng web ==========
+      // Tạo mock data để bỏ qua API và vào thẳng web
+      const mockLoginRes = {
+        token: {
+          accessToken: "mock-access-token",
+          refreshToken: "mock-refresh-token"
+        }
+      };
+      
+      const mockProfile = {
+        authenticated: mockLoginRes,
+        user: {
+          id: 1,
+          userName: values.userName || "guest",
+          email: "guest@example.com"
+        },
+        account: {},
+        permission: {}
+      };
+
       localStorage.setItem(
         config.LOCAL_ACCESS_TOKEN,
-        loginRes.token.accessToken
+        mockLoginRes.token.accessToken
       );
       localStorage.setItem(
         config.LOCAL_REFRESH_TOKEN,
-        loginRes.token.refreshToken
+        mockLoginRes.token.refreshToken
       );
       localStorage.setItem(
         config.LOCAL_AUTHENTICATED,
-        JSON.stringify(loginRes)
+        JSON.stringify(mockLoginRes)
       );
       localStorage.setItem(
         config.LOCAL_LOGIN_TYPE,
@@ -55,7 +117,7 @@ function LoginForm() {
       );
       localStorage.setItem(
         config.LOCAL_PROFILE,
-        JSON.stringify(await getAuth())
+        JSON.stringify(mockProfile)
       );
 
       if (values.remember) {
@@ -65,17 +127,24 @@ function LoginForm() {
       }
 
       if (returnUrl === "/login") {
-        navigate("/", { replace: true });
+        navigate("/quotation-management", { replace: true });
       } else {
         navigate(returnUrl, { replace: true });
       }
+      // ========== KẾT THÚC CODE MỚI ==========
     } catch (error) {
-      const message = handleError(error);
-      if (message.indexOf("Incorrect") > -1) {
-        ui.notiError("Thông tin đăng nhập chưa chính xác!");
-      } else {
-        ui.notiError("Lỗi hệ thống, vui lòng thử lại trong giây lát!");
-      }
+      // ========== CODE CŨ: Xử lý lỗi (đã comment) ==========
+      // const message = handleError(error);
+      // if (message.indexOf("Incorrect") > -1) {
+      //   ui.notiError("Thông tin đăng nhập chưa chính xác!");
+      // } else {
+      //   ui.notiError("Lỗi hệ thống, vui lòng thử lại trong giây lát!");
+      // }
+      // ========== KẾT THÚC CODE CŨ ==========
+
+      // ========== CODE MỚI: Xử lý lỗi ==========
+      ui.notiError("Lỗi hệ thống, vui lòng thử lại trong giây lát!");
+      // ========== KẾT THÚC CODE MỚI ==========
     }
 
     ui.setLoading(false);
@@ -89,34 +158,38 @@ function LoginForm() {
             <div className="flex flex-row justify-center items-center gap-2">
               <Image width={80} src={imgLogo} alt="" preview={false} />
               <div>
-                <div className="font-bold">Welcome FV Hospital </div>
+                <div className="font-bold">Welcome VietLabs </div>
                 <div>LOGIN</div>
               </div>
             </div>
             <div className="row mt-4">
               <Form form={form} layout="vertical">
                 <Form.Item
-                  label="Username"
+                  label="Tên đăng nhập"
                   name="userName"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please enter username!",
-                    },
-                  ]}
+                  // ========== CODE CŨ: Validation (đã comment) ==========
+                  // rules={[
+                  //   {
+                  //     required: true,
+                  //     message: "Please enter username!",
+                  //   },
+                  // ]}
+                  // ========== KẾT THÚC CODE CŨ ==========
                 >
                   <Input />
                 </Form.Item>
 
                 <Form.Item
-                  label="Password"
+                  label="Mật khẩu"
                   name="password"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please enter password!",
-                    },
-                  ]}
+                  // ========== CODE CŨ: Validation (đã comment) ==========
+                  // rules={[
+                  //   {
+                  //     required: true,
+                  //     message: "Please enter password!",
+                  //   },
+                  // ]}
+                  // ========== KẾT THÚC CODE CŨ ==========
                 >
                   <Input.Password onPressEnter={handleSubmit} />
                 </Form.Item>
@@ -135,7 +208,7 @@ function LoginForm() {
                     onClick={handleSubmit}
                     type="primary"
                   >
-                    Login
+                    Đăng nhập
                   </Button>
                 </div>
               </Form>
