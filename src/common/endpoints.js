@@ -1,9 +1,9 @@
 export default {
   getItems: (listName) => `/odata/${listName}/`,
-  getItem: (listName, id) => `/odata/${listName}/${id}`,
+  getItem: (listName, id) => `/odata/${listName}(${id})`,
   addItem: (listName) => `/odata/${listName}`,
-  updateItem: (listName, id) => `/odata/${listName}/${id}/`,
-  deleteItem: (listName, id) => `/odata/${listName}/${id}`,
+  updateItem: (listName, id) => `/odata/${listName}(${id})/`,
+  deleteItem: (listName, id) => `/odata/${listName}(${id})`,
   //API Permission
   addItemFunc: (listName) => `/odata/${listName}/add-or-update`,
   // File

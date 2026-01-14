@@ -1,0 +1,1156 @@
+// Customer Management Styles
+
+.customer-management {
+  padding: 0;
+
+  .ant-typography {
+    margin-bottom: 24px;
+    font-size: 24px;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+  }
+
+  // Search and Filter Section
+  .ant-row {
+    margin-bottom: 16px;
+
+    .ant-col {
+      margin-bottom: 8px;
+
+      @media (max-width: 576px) {
+        margin-bottom: 12px;
+      }
+    }
+  }
+
+  // Action Buttons
+  .action-buttons-wrapper {
+    @media (max-width: 768px) {
+      text-align: left !important;
+      margin-top: 12px;
+    }
+
+    // Button "Thêm khách hàng"
+    .ant-btn-primary {
+      background-color: #007b8a;
+      border-color: #007b8a;
+
+      &:hover,
+      &:focus {
+        background-color: #1f8d97;
+        border-color: #1f8d97;
+      }
+
+      &:active {
+        background-color: #156066;
+        border-color: #156066;
+      }
+    }
+  }
+
+  .ant-space {
+    width: 100%;
+    justify-content: flex-end;
+
+    @media (max-width: 768px) {
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    &.mobile-vertical-space {
+      @media (max-width: 768px) {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+
+    &.desktop-horizontal-space {
+      @media (min-width: 769px) {
+        flex-direction: row;
+      }
+    }
+  }
+
+  .mobile-block-button {
+    @media (max-width: 768px) {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+
+    @media (min-width: 769px) {
+      width: auto;
+    }
+  }
+
+  // Customer Cards Grid
+  .customer-cards-grid {
+    margin-top: 24px;
+  }
+
+  .customer-card {
+    height: 100%;
+    border-radius: 12px; /* Tăng từ 8px lên 12px để bo tròn hơn */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden; /* Đảm bảo border-radius hoạt động đúng */
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .ant-card-body {
+      padding: 12px 22px; /* Giảm padding top/bottom từ 16px xuống 12px để giảm height */
+    }
+
+    .ant-card-actions {
+      border-top: 1px solid #f0f0f0;
+      background: #fafafa;
+
+      li {
+        margin: 8px 0;
+        text-align: center;
+
+        .ant-btn {
+          height: 36px;
+          font-weight: 500;
+          width: 70%;
+          max-width: 120px;
+          background-color: #007b8a;
+          border-color: #007b8a;
+
+          &:hover,
+          &:focus {
+            background-color: #1f8d97;
+            border-color: #1f8d97;
+          }
+
+          &:active {
+            background-color: #156066;
+            border-color: #156066;
+          }
+        }
+      }
+    }
+  }
+
+  .customer-card-content {
+    .customer-card-status {
+      margin-bottom: 8px; /* Giảm từ 12px xuống 8px */
+      text-align: right;
+
+      .ant-tag {
+        &.ant-tag-green,
+        &[style*="background-color: #F1F8F4"] {
+          border-radius: 12px;
+          font-weight: 600;
+          padding: 4px 12px;
+        }
+      }
+    }
+
+    .customer-card-company {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px; /* Giảm từ 16px xuống 12px */
+      padding-bottom: 8px; /* Giảm từ 12px xuống 8px */
+      gap: 6px; /* Giảm từ 8px xuống 6px để sát nhau hơn */
+      justify-content: flex-start;
+
+      .company-icon,
+      .lucide {
+        font-size: 20px;
+        color: #0f7798;
+        margin-right: 0;
+        margin-left: 0;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .company-name {
+        font-size: 14px;
+        font-weight: 600;
+        color: #262626;
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: left;
+        margin-left: 0;
+      }
+    }
+
+    .customer-card-representative {
+      margin-bottom: 12px;
+      background-color: #e6f7ff; /* Light blue background */
+      border-radius: 8px; /* Rounded corners */
+      padding: 12px 16px; /* Padding inside card */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      border: 1px solid #b3e5fc; /* Light border */
+
+      .representative-label {
+        font-size: 12px; /* Increase from 12px */
+        color: #0f7798; /* Teal color instead of gray */
+        margin-bottom: 12px; /* Increase spacing */
+        font-weight: 600; /* Bold text */
+      }
+
+      .representative-info {
+        .info-item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 8px; /* Increase from 6px */
+          font-size: 12px;
+          color: #262626; /* Darker text color */
+          gap: 6px; /* Increase from 4px */
+          justify-content: flex-start;
+          text-align: left;
+
+          &:last-child {
+            margin-bottom: 0; /* Remove margin from last item */
+          }
+
+          .info-item {
+            font-size: 11px;
+          }
+
+          .info-icon {
+            font-size: 14px;
+            color: #0f7798; /* Teal color instead of blue */
+            margin-right: 0;
+            margin-left: 0;
+            width: 16px;
+            flex-shrink: 0;
+            text-align: left;
+            display: flex;
+            align-items: center;
+          }
+
+          span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: left;
+            margin-left: 0;
+            color: #262626; /* Dark gray text */
+          }
+        }
+      }
+    }
+
+    .customer-card-industry {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: #595959;
+      margin-bottom: 8px; /* Giảm từ 12px xuống 8px */
+      padding: 6px 0; /* Giảm từ 8px xuống 6px */
+
+      .industry-profession {
+        text-align: left;
+        flex-shrink: 0;
+      }
+
+      .industry-city {
+        text-align: right;
+        margin-left: auto;
+      }
+    }
+
+    .customer-card-type {
+      margin-bottom: 8px; /* Giảm từ 12px xuống 8px */
+      padding-top: 8px;
+      border-top: 1px solid #f0f0f0; /* Giữ lại border chỉ ở customer-card-type */
+    }
+
+    .customer-card-financial {
+      padding-top: 8px; /* Giảm từ 12px xuống 8px */
+
+      .financial-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+        font-size: 12px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .financial-label {
+          color: #8c8c8c;
+          font-weight: 500;
+          text-align: left;
+        }
+
+        .financial-value {
+          color: #262626;
+          font-weight: 600;
+          text-align: left;
+
+          &.forecast-value {
+            color: #4caf50;
+          }
+
+          &.discount-value {
+            color: #ff4d4f;
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive cho cards
+  @media (max-width: 768px) {
+    .customer-card {
+      .customer-card-content {
+        .customer-card-company {
+          .company-name {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .customer-cards-grid {
+      margin-top: 16px;
+    }
+
+    .customer-card {
+      .ant-card-body {
+        padding: 12px 18px; /* Tăng padding left và right thêm 6px (12px + 6px = 18px) */
+      }
+    }
+  }
+
+  // Modal Styles
+  .ant-modal {
+    .ant-form-item-label > label {
+      font-weight: 500;
+    }
+
+    &.customer-form-modal {
+      .ant-modal-body {
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+        padding: 24px;
+      }
+
+      .customer-form {
+        .ant-form-item {
+          margin-bottom: 16px;
+        }
+
+        .ant-input,
+        .ant-select-selector,
+        .ant-input-number {
+          width: 100%;
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      margin: 0;
+      max-width: 100%;
+      top: 0;
+      padding-bottom: 0;
+
+      .ant-modal-content {
+        border-radius: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ant-modal-body {
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      &.customer-form-modal {
+        .ant-modal-body {
+          max-height: 100%;
+          padding: 16px;
+        }
+      }
+    }
+  }
+
+  // View Modal
+  .ant-modal-body {
+    p {
+      margin-bottom: 12px;
+      line-height: 1.8;
+
+      @media (max-width: 576px) {
+        margin-bottom: 8px;
+        line-height: 1.6;
+        font-size: 14px;
+      }
+
+      strong {
+        display: inline-block;
+        min-width: 150px;
+        color: #595959;
+
+        @media (max-width: 576px) {
+          min-width: 120px;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  // Search Input
+  .ant-input-search {
+    @media (max-width: 576px) {
+      .ant-input {
+        font-size: 14px;
+      }
+    }
+
+    // Icon Search color
+    .ant-input-search-button {
+      background-color: #007b8a;
+      border-color: #007b8a;
+
+      &:hover,
+      &:focus {
+        background-color: #1f8d97;
+        border-color: #1f8d97;
+      }
+
+      &:active {
+        background-color: #156066;
+        border-color: #156066;
+      }
+
+      .anticon {
+        color: #fff;
+      }
+    }
+  }
+
+  // Select
+  .ant-select {
+    @media (max-width: 576px) {
+      font-size: 14px;
+    }
+  }
+
+  // Buttons
+  .ant-btn {
+    @media (max-width: 576px) {
+      font-size: 14px;
+      height: 36px;
+      padding: 0 16px;
+    }
+  }
+
+  // Responsive breakpoints
+  @media (max-width: 1200px) {
+    // xl breakpoint
+  }
+
+  @media (max-width: 992px) {
+    // lg breakpoint
+  }
+
+  @media (max-width: 768px) {
+    // md breakpoint - Tablet
+    .ant-col {
+      margin-bottom: 12px;
+    }
+
+    .text-right {
+      text-align: left !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    // sm breakpoint - Mobile
+    padding: 8px;
+
+    .ant-row {
+      margin-bottom: 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    // xs breakpoint - Small Mobile
+    .ant-table {
+      font-size: 11px;
+    }
+
+    .ant-btn {
+      font-size: 12px;
+      padding: 0 12px;
+    }
+  }
+}
+
+// New Modal Styles
+.customer-form-modal-new {
+  .ant-modal-content {
+    padding: 0;
+    border-radius: 8px;
+    margin: -90px auto 0;
+    overflow: visible; // Cho phép button close hiển thị
+    position: relative;
+  }
+
+  .ant-modal-body {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+  }
+
+  // Custom Header
+  .modal-header-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: #fafafa;
+    position: relative;
+
+    .ant-switch {
+      min-width: 60px;
+    }
+
+    .modal-close-button {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+
+      .anticon {
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.45);
+      }
+    }
+  }
+
+  // Footer with Save and Cancel buttons
+  .modal-footer-custom {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 16px 24px;
+    border-top: 1px solid #f0f0f0;
+    background-color: #fafafa;
+    margin-top: auto;
+    flex-shrink: 0;
+
+    .ant-space {
+      .ant-btn {
+        border-radius: 4px;
+        height: 36px;
+        padding: 0 16px;
+        font-weight: 500;
+
+        // Button "Hủy"
+        &:first-child {
+          background-color: #fff;
+          border-color: #d9d9d9;
+          color: #595959;
+
+          &:hover {
+            background-color: #f5f5f5;
+            border-color: #40a9ff;
+            color: #40a9ff;
+          }
+        }
+
+        // Button "Lưu thay đổi"
+        &.ant-btn-primary {
+          background-color: #007b8a;
+          border-color: #007b8a;
+          color: #fff;
+
+          &:hover,
+          &:focus {
+            background-color: #1f8d97;
+            border-color: #1f8d97;
+            color: #fff;
+          }
+
+          &:active {
+            background-color: #156066;
+            border-color: #156066;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  // Tabs Navigation with History Button
+  .tabs-with-history {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 0 24px;
+
+    .customer-form-tabs {
+      flex: 1;
+      padding: 0;
+      border-bottom: none;
+
+      .ant-tabs-nav {
+        margin-bottom: 0;
+
+        .ant-tabs-tab {
+          padding: 12px 16px;
+          font-weight: 500;
+
+          &.ant-tabs-tab-active {
+            .ant-tabs-tab-btn {
+              color: #1890ff;
+            }
+          }
+        }
+
+        .ant-tabs-ink-bar {
+          background: #1890ff;
+        }
+      }
+    }
+
+    .history-button-wrapper {
+      margin-left: 16px;
+      flex-shrink: 0;
+
+      .ant-btn {
+        border-radius: 4px;
+        height: 36px;
+        padding: 0 16px;
+        font-weight: 500;
+        background-color: #f5f5f5;
+        border-color: #d9d9d9;
+        color: #595959;
+
+        &:hover {
+          background-color: #e6e6e6;
+          border-color: #bfbfbf;
+        }
+      }
+    }
+  }
+
+  // Form Content Wrapper
+  .form-content-wrapper {
+    padding: 24px;
+    //margin: 24px;
+
+    // Form Title Section
+    .form-title-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e0e0e0;
+
+      .form-title-icon {
+        font-size: 20px;
+        color: #1890ff;
+      }
+
+      .form-title-text {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #262626;
+      }
+    }
+
+    // Form Styles
+    .customer-form {
+      .ant-form-item {
+        margin-bottom: 20px;
+
+        .ant-form-item-label {
+          padding-bottom: 4px;
+
+          label {
+            font-weight: 500;
+            color: #262626;
+
+            &.ant-form-item-required {
+              &::before {
+                color: #ff4d4f;
+              }
+            }
+          }
+        }
+
+        .ant-input,
+        .ant-select-selector {
+          border-radius: 4px;
+          border-color: #d9d9d9;
+
+          &:hover {
+            border-color: #40a9ff;
+          }
+
+          &:focus,
+          &.ant-input-focused,
+          &.ant-select-focused .ant-select-selector {
+            border-color: #40a9ff;
+            box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+          }
+        }
+
+        // Radio Group Styles
+        .ant-radio-group {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
+
+          .ant-radio-wrapper {
+            margin-right: 0;
+            font-size: 14px;
+
+            .ant-radio {
+              .ant-radio-inner {
+                border-color: #d9d9d9;
+              }
+
+              &.ant-radio-checked {
+                .ant-radio-inner {
+                  border-color: #1890ff;
+                  background-color: #1890ff;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Form Section Card
+    .form-section-card {
+      margin-bottom: 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+      .ant-card-body {
+        padding: 24px;
+      }
+
+      .form-section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+
+        .form-section-icon {
+          font-size: 20px;
+          color: #007b8a;
+        }
+
+        .form-section-text {
+          margin: 0;
+          font-size: 18px;
+          font-weight: 600;
+          color: #007b8a;
+        }
+      }
+
+      // Blacklist Card Styling
+      &.blacklist-card {
+        border: 1px solid #ffccc7;
+
+        .form-section-title {
+          border-bottom-color: #ffccc7;
+
+          .blacklist-icon {
+            color: #ff4d4f;
+          }
+
+          .blacklist-text {
+            color: #ff4d4f;
+          }
+        }
+      }
+    }
+
+    // Form Section Wrapper (for ĐỊA CHỈ DOANH NGHIỆP, etc.) - Deprecated, using Card now
+    .form-section-wrapper {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid #e0e0e0;
+
+      .form-section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+
+        .form-section-icon {
+          font-size: 18px;
+          color: #1890ff;
+        }
+
+        .form-section-text {
+          margin: 0;
+          font-size: 16px;
+          font-weight: 600;
+          color: #1890ff;
+        }
+      }
+    }
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    .modal-header-custom {
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+
+      .ant-space {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
+
+    .modal-footer-custom {
+      padding: 12px 16px;
+
+      .ant-space {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
+
+    .tabs-with-history {
+      padding: 0 16px;
+      flex-wrap: wrap;
+
+      .customer-form-tabs {
+        padding: 0;
+
+        .ant-tabs-nav {
+          .ant-tabs-tab {
+            padding: 8px 12px;
+            font-size: 14px;
+          }
+        }
+      }
+
+      .history-button-wrapper {
+        margin-right: 8px;
+        margin-bottom: 8px;
+      }
+    }
+
+    .form-content-wrapper {
+      margin: 16px;
+      padding: 16px;
+
+      .form-title-section {
+        .form-title-text {
+          font-size: 16px;
+        }
+      }
+
+      .customer-form {
+        .ant-form-item {
+          .ant-radio-group {
+            flex-direction: column;
+            gap: 8px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .ant-modal {
+      max-width: 95vw;
+    }
+
+    .form-content-wrapper {
+      margin: 12px;
+      padding: 12px;
+
+      .ant-row {
+        .ant-col {
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+
+  // Contacts Tab Styles
+  .contacts-tab-wrapper {
+    padding: 24px;
+
+    .form-section-card {
+      .form-section-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        width: 100%;
+
+        .form-section-text {
+          margin: 0;
+        }
+
+        .add-contact-btn {
+          background-color: #007b8a;
+          border-color: #007b8a;
+          color: white;
+
+          &:hover:not(:disabled) {
+            background-color: #1f8d97;
+            border-color: #1f8d97;
+          }
+        }
+      }
+    }
+
+    .contacts-list {
+      .contact-card {
+        border: 1px solid #b3e5fc;
+        border-radius: 8px;
+        transition: all 0.3s;
+        height: 100%;
+
+        &:hover {
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-tags {
+          margin-bottom: 16px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+
+          .ant-tag {
+            margin: 0;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 12px;
+          }
+        }
+
+        .contact-info {
+          .contact-item {
+            display: flex;
+            margin-bottom: 12px;
+            font-size: 14px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            .contact-label {
+              font-weight: 500;
+              color: #595959;
+              min-width: 120px;
+              flex-shrink: 0;
+            }
+
+            .contact-value {
+              color: #262626;
+              flex: 1;
+              word-break: break-word;
+            }
+          }
+        }
+
+        .contact-actions {
+          display: flex;
+          justify-content: flex-end;
+          gap: 8px;
+          margin-top: 16px;
+          padding-top: 16px;
+          border-top: 1px solid #f0f0f0;
+
+          .contact-edit-btn {
+            color: #52c41a;
+
+            &:hover {
+              background-color: #f6ffed;
+              color: #52c41a;
+            }
+          }
+
+          .contact-delete-btn {
+            color: #ff4d4f;
+
+            &:hover {
+              background-color: #fff1f0;
+              color: #ff4d4f;
+            }
+          }
+        }
+      }
+    }
+
+    // Responsive
+    @media (max-width: 768px) {
+      padding: 16px;
+
+      .form-section-card {
+        .form-section-title {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+
+          .add-contact-btn {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Forecast Tab Styles
+.forecast-tab-wrapper {
+  padding: 24px;
+
+  .form-section-card {
+    .form-section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      width: 100%;
+
+      .form-section-text {
+        margin: 0;
+      }
+
+      .add-forecast-btn {
+        background-color: #007b8a;
+        border-color: #007b8a;
+        color: white;
+
+        &:hover:not(:disabled) {
+          background-color: #1f8d97;
+          border-color: #1f8d97;
+        }
+      }
+    }
+
+    .forecast-table {
+      .ant-table-thead > tr > th {
+        background-color: #e6f7ff;
+        color: #007b8a;
+        font-weight: 600;
+        border-bottom: 2px solid #b3e5fc;
+        padding: 12px 16px;
+      }
+
+      .ant-table-tbody > tr > td {
+        border-bottom: 1px solid #f0f0f0;
+        padding: 12px 16px;
+      }
+
+      .ant-table-tbody > tr:hover > td {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+
+    .form-section-card {
+      .form-section-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+
+        .add-forecast-btn {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// History Modal Styles
+.history-modal {
+  .ant-modal-header {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 16px 24px;
+
+    .ant-modal-title {
+      color: #007b8a;
+      font-weight: 600;
+      font-size: 18px;
+    }
+  }
+
+  .ant-modal-close {
+    color: #8c8c8c;
+
+    &:hover {
+      color: #262626;
+    }
+  }
+
+  .history-table {
+    .ant-table-thead > tr > th {
+      background-color: #e6f7ff;
+      color: #007b8a;
+      font-weight: 600;
+      border-bottom: 2px solid #b3e5fc;
+      padding: 12px 16px;
+    }
+
+    .ant-table-tbody > tr > td {
+      border-bottom: 1px solid #f0f0f0;
+      padding: 12px 16px;
+    }
+
+    .ant-table-tbody > tr:hover > td {
+      background-color: #f5f5f5;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 95% !important;
+    margin: 10px auto;
+
+    .history-table {
+      .ant-table-thead > tr > th,
+      .ant-table-tbody > tr > td {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+    }
+  }
+}
